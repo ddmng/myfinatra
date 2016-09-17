@@ -24,5 +24,12 @@ class StatsController extends Controller {
   get("/stats") { request: Request =>
     db
   }
+
+  // Serve static files
+  get("/:*") { request: Request =>
+    response.ok.fileOrIndex(
+      request.params("*"),
+      "index.html")
+  }
 }
 

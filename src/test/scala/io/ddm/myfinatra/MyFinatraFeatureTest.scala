@@ -3,6 +3,7 @@ package io.ddm.myfinatra
 /**
   * Created by white on 16/09/16.
   */
+
 import com.twitter.finagle.http.Status
 import com.twitter.finatra.http.test.EmbeddedHttpServer
 import com.twitter.inject.server.FeatureTest
@@ -17,6 +18,14 @@ class StatsControllerFeatureTest extends FeatureTest {
       path = "/stats",
       andExpect = Status.Ok,
       withBody = "[{\"index\":\"index1\",\"data\":1}]"
+    )
+  }
+
+  "Server" should "serve static pages" in {
+    server.httpGet(
+      path = "/testpage.html",
+      andExpect = Status.Ok,
+      withBody = "Page used for testing static content"
     )
   }
 }
