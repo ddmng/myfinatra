@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Running stats</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+
+<script lang="javascript">
+    $.ajax({
+        dataType: "json",
+        url: "/stats",
+        data: "",
+        success: function (data, status, jqxhr) {
+            console.log(data);
+            return data;
+        }
+    });
+</script>
+
+</body>
+</html>

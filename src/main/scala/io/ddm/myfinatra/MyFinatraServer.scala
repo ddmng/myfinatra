@@ -5,12 +5,14 @@ package io.ddm.myfinatra
   */
 
 
+import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter
-import io.ddm.myfinatra.controllers.{StatsController}
+import com.twitter.finatra.logging.filter.{LoggingMDCFilter, TraceIdMDCFilter}
+import io.ddm.myfinatra.controllers.StatsController
 
-object MyFinatraApp extends MyFinatraServer
+object MyFinatraMain extends MyFinatraServer
 
 
 class MyFinatraServer extends HttpServer {
@@ -20,6 +22,8 @@ class MyFinatraServer extends HttpServer {
 
   override protected def configureHttp(router: HttpRouter): Unit = {
     router
+      .filter[LoggingMDCFilter[Request, Response]]
+      .filter[TraceIdMDCFilter[Request, Response]]
       .filter[CommonFilters]
       .add[StatsController]
 

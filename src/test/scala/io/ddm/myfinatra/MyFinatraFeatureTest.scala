@@ -21,7 +21,7 @@ class StatsControllerFeatureTest extends FeatureTest {
     )
   }
 
-  "Server" should "serve static pages" in {
+  "Serve static pages" in {
     server.httpGet(
       path = "/testpage.html",
       andExpect = Status.Ok,
