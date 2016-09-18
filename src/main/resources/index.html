@@ -6,18 +6,18 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 </head>
 <body>
-
+<ul>
 <script lang="javascript">
-    $.ajax({
-        dataType: "json",
+    $.getJSON({
         url: "/stats",
         data: "",
         success: function (data, status, jqxhr) {
-            console.log(data);
-            return data;
+            console.log("ok");
         }
+    }).done(function(data){
+        console.dir(data);
     });
 </script>
-
+</ul>
 </body>
 </html>
